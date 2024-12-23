@@ -1,0 +1,399 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column; /* Ensure vertical stacking of sections */
+    min-height: 100vh;
+    margin: 0;
+}
+
+nav {
+    background-color: #796874;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.nav-list a:hover {
+    background-color: #575757;
+    color: #fff;
+}
+
+.nav-list a.active {
+    background-color: #28a745; /* Highlight active link */
+    color: white;
+}
+
+.container, .contain {
+    background-color: #f8ffa7;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Adjust width as needed */
+    margin: 20px auto; /* Center and add space between sections */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input[type="text"], input[type="date"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.contain {
+    width: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.text {
+    flex: 1;
+    padding-right: 10px; /* Adjust as needed */
+}
+
+.image {
+    flex: 1;
+    text-align: right;
+}
+
+.image img {
+    width: 100%; /* Make the image take full width */
+    height: auto;
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+
+    .container, .contain {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .contain {
+        flex-direction: column; /* Stack text and image vertically */
+        text-align: center;
+    }
+
+    .text {
+        padding-right: 0; /* Remove padding for smaller screens */
+        margin-bottom: 20px; /* Add space between text and image */
+    }
+
+    .image {
+        text-align: center;
+    }
+}
+
+.tiles-section {
+    padding: 20px;
+    background-color: #dccecee5;
+    text-align: center;
+}
+
+.tiles-header {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.tiles-header h1 {
+    color: #333;
+    text-align: left;
+    margin-bottom: 50px;
+    font-size: 35px;
+}
+
+.tiles-header p {
+    color: #555;
+    font-size: 20px;
+}
+
+.tiles-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Ensure tiles wrap on smaller screens */
+}
+
+.tile {
+    background-color: #d7ec12;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 28%; /* Adjust width to fit three tiles in a row */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative; /* For positioning the button */
+    margin-bottom: 20px; /* Space between rows */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+.tile:hover {
+    transform: translateY(-10px); /* Lift the tile up */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.tile h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+.tile p {
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: 100;
+}
+
+.tile img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 55px;
+}
+
+.cta-button {
+    background-color: #0b0108;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    bottom: 20px; /* Position at the bottom */
+    left: 20px; /* Position at the left */
+}
+
+.cta-button:hover {
+    background-color: #218838;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .tiles-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tile {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+/* CSS for FAQ section */
+.faq-section {
+    padding: 20px;
+    background-color: #93cce7;
+    border-top: 2px solid #ddd; /* Add a top border to separate the section */
+    margin-top: 20px;
+}
+
+.faq-section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+details {
+    border: 1px solid #160b1c; /* Add border to each details tag */
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #b8daf1c6;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+details[open] summary {
+    color: #191515c6; /* Change color when details are open */
+}
+
+details p {
+    margin: 10px 0 0 0;
+    padding: 0;
+    color: #555;
+}
+
+/* CSS end for FAQ */
+
+/* CSS for banner */
+.banner {
+    background-image: url('banner-image-url.jpg'); /* Replace with your banner image URL */
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Add a dark overlay */
+    z-index: 1;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.banner p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.banner-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.banner-button:hover {
+    background-color: #218838;
+}
+
+/* CSS end for banner */
+
+/* CSS for full-screen form */
+.full-screen-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #e8f25f;
+    padding: 20px;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Limit the max width for better readability */
+}
+
+.full-screen-form h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.full-screen-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.full-screen-form input[type="text"], 
+.full-screen-form input[type="date"], 
+.full-screen-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* scrolling section */
+
+.scrolling-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.tiles {
+    display: flex;
+    animation: scroll 10s linear infinite;
+}
+.tile-1 {
+    min-width: 200px;
+    height: 150px;
+    margin: 10px;
+    background-color: aqua;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    line-height: 150px;
+    font-size: 20px;
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-200px * 5 - 10px * 10));
+    }
+}
