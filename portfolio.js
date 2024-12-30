@@ -42,4 +42,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     // Apply a simple parallax effect
     homeSection.style.backgroundPosition = `center ${scrolled * 0.5}px`;
   });
+
+
+  document.querySelectorAll('.dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+        alert(`You clicked on ${dot.id}`);
+    });
+});
   
