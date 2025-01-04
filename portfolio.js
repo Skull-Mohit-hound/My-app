@@ -1,3 +1,22 @@
+// Purpose: JavaScript code for the portfolio website
+ // Your web app's Firebase configuration
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ const firebaseConfig = {
+   apiKey: "AIzaSyDRbkHABJfGzcOMjbYNylZgQuV74Vkm5Eg",
+   authDomain: "my-portfolio-new-321.firebaseapp.com",
+   projectId: "my-portfolio-new-321",
+   storageBucket: "my-portfolio-new-321.firebasestorage.app",
+   messagingSenderId: "919698570992",
+   appId: "1:919698570992:web:2ed309526b8d5edbf94c35",
+   measurementId: "G-7WHPXP0L5R"
+ };
+
+ // Initialize Firebase
+ const app = initializeApp(firebaseConfig);
+ const analytics = getAnalytics(app);
+
+
+
 // Smooth Scroll Effect
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -24,7 +43,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     // Simple validation
     if (!name || !email || !message) {
       alert("Please fill out all fields.");
-      return;
+      return false;
     }
   
     // Here, you can send the form data via AJAX or other methods
