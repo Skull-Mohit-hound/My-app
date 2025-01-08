@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Affordable Variety Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #f5f5f5;
+            background: linear-gradient(to bottom right, #2c3e50, #34495e);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        header {
+            background-image: url("https://res.cloudinary.com/chakshu/image/upload/v1736172678/Quote%20Hunts/tyc7k8uvivjk3dpgl9mj.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: text-glow 2s infinite alternate;
+            max-width: 90%;
+            word-wrap: break-word;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            max-width: 80%;
+            margin: 10px auto 0;
+            word-wrap: break-word;
+        }
+
+        @keyframes text-glow {
+            from {
+                text-shadow: 0 0 5px #e67e22, 0 0 10px #e67e22, 0 0 15px #e67e22;
+            }
+            to {
+                text-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12, 0 0 30px #f39c12;
+            }
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #2c3e50;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #e67e22;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #e74c3c;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product {
+            perspective: 1000px;
+            width: 200px;
+            height: 300px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .product-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
+
+        .product:hover .product-inner {
+            transform: rotateY(180deg);
+        }
+
+        .product-front,
+        .product-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            background: #2c3e50;
+        }
+
+        .product-front img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .product-front h3, 
+        .product-front p,
+        .product-back h3, 
+        .product-back ul {
+            margin: 10px auto;
+            padding: 0;
+            word-wrap: break-word;
+            text-align: center;
+        }
+
+        .product-back ul {
+            list-style: none;
+            margin: 10px 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 300px;
+            width: 100%;
+            margin: 20px 0;
+            border: 3px solid #ecf0f1;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #1c1c1c;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#location">Find Us</a>
+    </nav>
+
+    <header>
+        <h1>Welcome to Collection Hub</h1>
+        <p>Your one-stop destination for quality items at affordable prices!</p>
+    </header>
+
+    <section id="home">
+        <h2>Why Choose Us?</h2>
+        <p>We offer a wide range of products, including grocery items, stationery, sports equipment, teddies, and more, all at unbeatable prices.</p>
+    </section>
+
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="products">
+            <div class="product">
+                <div class="product-inner">
+                    <div class="product-front">
+                        <img src="https://res.cloudinary.com/chakshu/image/upload/v1736159638/Quote%20Hunts/n59msdsfmhxqwnoka2ib.jpg" alt="Grocery">
+                        <h3>Grocery</h3>
+                        <p>Fresh and quality products for your daily needs.</p>
+                    </div>
+                    <div class="product-back">
+                        <h3>Grocery Items</h3>
+                        <ul>
+                            <li>Rice</li>
+                            <li>Pulses</li>
+                            <li>Flour</li>
+                            <li>Cooking Oil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat similar blocks for other products -->
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing top-notch products at prices that won't break the bank. Visit us to experience the difference!</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Phone: +123 456 7890</p>
+        <p>Email: shop@example.com</p>
+        <p>Address: 123 Main Street</p>
+    </section>
+
+    <section id="location">
+        <h2>Find Us</h2>
+        <p>Locate our store easily using the map below:</p>
+        <iframe 
+            id="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345094723!2d-122.4212393846814!3d37.77492977975924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064e1a4d83b%3A0x4adf4b81bb60fae5!2s123%20Main%20Street%2C%20San%20Francisco%2C%20CA%2094122%2C%20USA!5e0!3m2!1sen!2sin!4v1602066232264!5m2!1sen!2sin" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>

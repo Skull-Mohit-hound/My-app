@@ -1,172 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loader Animation</title>
-  <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Affordable Variety Store</title>
+    <style>
 
-    body {
-      font-family: Arial, sans-serif;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #f5f5f5;
+            background: linear-gradient(to bottom right, #2c3e50, #34495e);
+            overflow-x: hidden;
+        }
 
-    /* Loader Styles */
-    .spinner {
-      position: absolute;
-      width: 9px;
-      height: 9px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-    }
+        header {
+    background-image: url(https://res.cloudinary.com/chakshu/image/upload/v1736258284/Quote%20Hunts/de5nz1s4ghq6sjs9emto.webp);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding-top: 360px; /* Adjust this based on the nav height */
+    box-shadow: 0 4px 8px rgba(57, 7, 7, 0.3);
+}
 
-    .spinner div {
-      position: absolute;
-      width: 50%;
-      height: 150%;
-      background: #000000;
-      transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
-      animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
-    }
+        header h1, header p {
+            margin: 0;
+        }
 
-    .spinner div:nth-child(1) {
-      --delay: 0.1;
-      --rotation: 36;
-      --translation: 150;
-    }
+        header h1 {
+            font-size: 4rem;
+            color: black;
+            margin-bottom: 10px;
+            padding-top: 150px;
+            animation: text-glow 2s infinite alternate;
+        }
 
-    .spinner div:nth-child(2) {
-      --delay: 0.2;
-      --rotation: 72;
-      --translation: 150;
-    }
+        header p {
+            color: #091275;
+            font-size: 2.5rem;
+        }
 
-    .spinner div:nth-child(3) {
-      --delay: 0.3;
-      --rotation: 108;
-      --translation: 150;
-    }
+        nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(44, 72, 80, 0.9); /* Add transparency */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .spinner div:nth-child(4) {
-      --delay: 0.4;
-      --rotation: 144;
-      --translation: 150;
-    }
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: color 0.3s ease;
+        }
 
-    .spinner div:nth-child(5) {
-      --delay: 0.5;
-      --rotation: 180;
-      --translation: 150;
-    }
+        nav a:hover {
+            color: #e67e22;
+        }
 
-    .spinner div:nth-child(6) {
-      --delay: 0.6;
-      --rotation: 216;
-      --translation: 150;
-    }
+        section {
+            padding: 20px;
+            text-align: center;
+        }
 
-    .spinner div:nth-child(7) {
-      --delay: 0.7;
-      --rotation: 252;
-      --translation: 150;
-    }
+        section h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #e74c3c;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
-    .spinner div:nth-child(8) {
-      --delay: 0.8;
-      --rotation: 288;
-      --translation: 150;
-    }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
 
-    .spinner div:nth-child(9) {
-      --delay: 0.9;
-      --rotation: 324;
-      --translation: 150;
-    }
+        .product {
+            perspective: 1000px;
+            width: calc(100% - 40px);
+            max-width: 250px; /* Prevents stretching */
+            margin: 0 auto;
+        }
 
-    .spinner div:nth-child(10) {
-      --delay: 1;
-      --rotation: 360;
-      --translation: 150;
-    }
+        .product-inner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
 
-    @keyframes spinner-fzua35 {
-      0%, 10%, 20%, 30%, 50%, 60%, 70%, 80%, 90%, 100% {
-        transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
-      }
+        .product.clicked .product-inner {
+            transform: rotateY(180deg);
+        }
 
-      50% {
-        transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1.5%));
-      }
-    }
+        .product-front,
+        .product-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            background: #2c3e50;
+            overflow: hidden;
+        }
 
-    .cta {
-      margin: 20px;
-      padding: 15px 30px;
-      background-color: #007BFF;
-      color: white;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-  </style>
+        .product-front img {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .product-front h3, 
+        .product-front p,
+        .product-back h3, 
+        .product-back ul {
+            margin: 10px;
+            padding: 0;
+        }
+
+        .product-back ul {
+            list-style: none;
+            margin: 10px 0;
+            padding: 0;
+            text-align: left;
+        }
+
+        .product-back {
+            background: #34495e;
+            color: #ecf0f1;
+            transform: rotateY(180deg);
+            padding: 10px;
+        }
+
+        #home, #about, #location {
+            background: white;
+            color: black;
+        }
+
+        #home p, #about p, #location p {
+            margin: 0 auto;
+            max-width: 800px;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        #map {
+            height: 300px;
+            width: 100%;
+            margin: 20px 0;
+            border: 3px solid #ecf0f1;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #1c1c1c;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            header {
+                height: 40vh; /* Adjust banner height */
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.5rem;
+            }
+
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 90%; /* Prevent stretching */
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#location">Find Us</a>
+    </nav>
 
-  <!-- Call-to-Action (CTA) Buttons -->
-  <button class="cta" data-cta="cta1">Click Me (CTA 1)</button>
-  <button class="cta" data-cta="cta2">Click Me (CTA 2)</button>
+    <header>
+    </header>
 
-  <!-- Example content that will be shown after CTA interaction -->
-  <div id="content" style="display: none;">
-    <h1>Welcome to My Webpage</h1>
-    <p>This is the main content of the page.</p>
-  </div>
+    <section id="home">
+        <h2>Why Choose Us?</h2>
+        <p>Choose us for your one-stop shop offering a wide range of high-quality items at unbeatable prices. At our Collection Hub, we specialize in crockery, stationery, teddy bears, sports gear, and decorative pieces, all available at affordable, competitive rates. Whether you're looking to enhance your home decor, find the perfect gift, or stock up on essentials, we provide carefully curated products that cater to all your needs. With a commitment to quality and customer satisfaction, shopping with us ensures you get great value without compromising on style or durability.</p>
+    </section>
 
-  <!-- Hidden Loader Template -->
-  <div id="loader-template" class="spinner" style="display: none;">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="products">
+            <div class="product" onclick="flipCard(this)">
+                <div class="product-inner">
+                    <div class="product-front">
+                        <img src="https://res.cloudinary.com/chakshu/image/upload/v1736159638/Quote%20Hunts/n59msdsfmhxqwnoka2ib.jpg" alt="Crockery">
+                        <h3>Crockery</h3>
+                        <p>Explore elegant dinner sets, plates, and more for your dining needs.</p>
+                    </div>
+                    <div class="product-back">
+                        <h3>Crockery Items</h3>
+                        <ul>
+                            <li>Dinner Sets</li>
+                            <li>Plates</li>
+                            <li>Serving Bowls</li>
+                            <li>Cups</li>
+                            <li>Soup Bowl</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="product" onclick="flipCard(this)">
+                <div class="product-inner">
+                    <div class="product-front">
+                        <img src="https://res.cloudinary.com/chakshu/image/upload/v1736160034/Quote%20Hunts/j9unef4fobxqbrjr2g5k.jpg" alt="Stationery">
+                        <h3>Stationery</h3>
+                        <p>All the stationery items you need for work or school.</p>
+                    </div>
+                    <div class="product-back">
+                        <h3>Stationery Items</h3>
+                        <ul>
+                            <li>Notebooks</li>
+                            <li>Pens</li>
+                            <li>Markers</li>
+                            <li>Folders</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="product" onclick="flipCard(this)">
+                <div class="product-inner">
+                    <div class="product-front">
+                        <img src="https://res.cloudinary.com/chakshu/image/upload/v1736159926/Quote%20Hunts/cexbm7aaiyad948rztgv.jpg" alt="Sports Items">
+                        <h3>Sports Items</h3>
+                        <p>High-quality equipment for all your sporting activities.</p>
+                    </div>
+                    <div class="product-back">
+                        <h3>Sports Equipment</h3>
+                        <ul>
+                            <li>Cricket Bat</li>
+                            <li>Football</li>
+                            <li>Badminton Racket</li>
+                            <li>Skates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="product" onclick="flipCard(this)">
+                <div class="product-inner">
+                    <div class="product-front">
+                        <img src="https://res.cloudinary.com/chakshu/image/upload/v1736159729/Quote%20Hunts/bx7mexmbr93xy5yyfrcm.jpg" alt="Teddies">
+                        <h3>Teddies</h3>
+                        <p>Cute and cuddly teddies for everyone!</p>
+                    </div>
+                    <div class="product-back">
+                        <h3>Teddy Varieties</h3>
+                        <ul>
+                            <li>Small Teddies</li>
+                            <li>Medium Teddies</li>
+                            <li>Large Teddies</li>
+                            <li>Custom Teddies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // Add event listeners to all CTA buttons
-    document.querySelectorAll('.cta').forEach(button => {
-      button.addEventListener('click', function() {
-        const button = this;
-        const loaderTemplate = document.getElementById('loader-template');
-        
-        // Clone the loader and insert it next to the button
-        const loader = loaderTemplate.cloneNode(true);
-        loader.style.display = 'flex';
-        button.parentNode.insertBefore(loader, button.nextSibling);
-        
-        // Simulate loading and hide the loader after 3 seconds
-        setTimeout(() => {
-          loader.style.display = 'none';  // Hide loader
-          document.getElementById('content').style.display = 'block';  // Show content
-        }, 3000);  // 3 seconds delay
-      });
-    });
-  </script>
-  
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing top-notch products at prices that won't break the bank. Visit us to experience the difference!</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <strong><p>Phone: +91 9720844449</p></strong>
+        <strong><p>Email: paliwalmohit123@gmail.com</p></strong>
+    </section>
+
+    <section id="location">
+        <h2>Find Us</h2>
+        <p>Locate our store easily using the map below:</p>
+        <iframe 
+            id="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13731.762792748925!2d78.0140988!3d30.2793301!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929774dd27155%3A0xfc231d27592202fa!2sCollection%20Hub!5e0!3m2!1sen!2sin!4v1672492092710!5m2!1sen!2sin" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Collection Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('clicked');
+        }
+    </script>
 </body>
 </html>
